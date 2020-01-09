@@ -4,9 +4,10 @@ import android.content.Context;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+
 import com.facebook.drawee.backends.pipeline.PipelineDraweeControllerBuilder;
 import com.facebook.drawee.controller.BaseControllerListener;
 import com.facebook.drawee.controller.ControllerListener;
@@ -21,20 +22,20 @@ import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.common.SystemClock;
 import com.facebook.react.modules.fresco.ReactNetworkImageRequest;
 import com.facebook.react.uimanager.UIManagerModule;
 import com.facebook.react.uimanager.events.EventDispatcher;
-import me.relex.photodraweeview.OnPhotoTapListener;
-import me.relex.photodraweeview.OnScaleChangeListener;
-import me.relex.photodraweeview.OnViewTapListener;
-import me.relex.photodraweeview.PhotoDraweeView;
 
 import javax.annotation.Nullable;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
 import javax.microedition.khronos.egl.EGLDisplay;
+
+import me.relex.photodraweeview.OnPhotoTapListener;
+import me.relex.photodraweeview.OnScaleChangeListener;
+import me.relex.photodraweeview.OnViewTapListener;
+import me.relex.photodraweeview.PhotoDraweeView;
 
 import static com.facebook.react.views.image.ReactImageView.REMOTE_IMAGE_FADE_DURATION_MS;
 
@@ -87,7 +88,7 @@ public class PhotoView extends PhotoDraweeView {
                                           ResourceDrawableIdHelper resourceDrawableIdHelper) {
         Drawable drawable = resourceDrawableIdHelper.getResourceDrawable(getContext(), name);
         mLoadingImageDrawable =
-                drawable != null ? (Drawable) new AutoRotateDrawable(drawable, 1000) : null;
+                drawable != null ? new AutoRotateDrawable(drawable, 1000) : null;
         mIsDirty = true;
     }
 
